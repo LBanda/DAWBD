@@ -54,12 +54,16 @@ body {
     transition-property: color, background;
   }
   
-  header a:hover {
-    background:  #e81c4f;
-    color: white;
+  header {
+    background:  #03e2ff;
   }
 
 .preguntas {
     font-family: 'Times New Roman', Times, serif;
 }
 
+img{
+  padding-left: 5em;
+  padding-top: 2em;
+  width: 80%;
+}
