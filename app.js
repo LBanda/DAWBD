@@ -26,3 +26,18 @@ for(let item of arreglo){
         console.log(item)
         ), item);
 }
+
+
+// servidor web
+const http = require('http');
+const { url } = require('inspector');
+
+const server = http.createServer( (request,response) => {
+    console.log(request,url);
+    response.setHeader('Content-Type', 'text/html');
+    response.write('<h1>Hola Mundo!!!!, esta pagina no existe</h1>');
+    response.end();
+
+});
+
+server.listen(3000);
