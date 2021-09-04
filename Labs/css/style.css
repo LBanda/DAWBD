@@ -67,3 +67,11 @@ img{
   padding-top: 2em;
   width: 80%;
 }
+
+.ocultar {
+  display: none;
+}
+
+.mostrar {
+  display: block;
+}

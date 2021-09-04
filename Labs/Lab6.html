@@ -12,6 +12,31 @@
 </header>
 <body>
     
+    <div id="msg"></div>
+ 
+    <div id="error" class="alert alert-danger ocultar" role="alert">
+        Las Contraseñas no coinciden.
+    </div>
+    <div id="ok" class="alert alert-success ocultar" role="alert">
+        Las Contraseñas valida!!!
+    </div>
+
+    <form id="miformulario" onsubmit="verificarPasswords(); return false">
+        <div class="form-group">
+            <label for="usuario">Usuario</label>
+            <input type="text" class="form-control" id="usuario" value="Banda" required>
+        </div>
+        <div class="form-group">
+            <label for="pass1">Contraseña</label>
+            <input type="password" class="form-control" id="pass1" required>
+        </div>
+        <div class="form-group">
+            <label for="pass2">Vuelve a escribir la Contraseña</label>
+            <input type="password" class="form-control" id="pass2" required>
+        </div>
+     
+        <button type="submit" id="login" class="btn btn-primary">Login</button>
+    </form>
     
 
     <footer class="info">
