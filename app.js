@@ -34,9 +34,56 @@ const { url } = require('inspector');
 
 const server = http.createServer( (request,response) => {
     console.log(request,url);
+
+
+
+// reaccionar de acuerdo a la ruta
+if(request.url === "/hola"){
     response.setHeader('Content-Type', 'text/html');
-    response.write('<h1>Hola Mundo!!!!, esta pagina no existe</h1>');
+    response.write('<h1>Hola Mundo!!!!</h1>');
     response.end();
+} else if(request.url === "/menu"){
+    // mostrar menu
+    const platillos = [
+        {nombre:"sopes", descripcion:"tortilla frita con frijoles, queso y crema"},
+        {nombre:"chilaquiles", descripcion:"tortilla cortada y frita con salsa"},
+        {nombre:"taco", descripcion:"tortilla rellena de carne y salsa"},
+        {nombre:"pambazo", descripcion:"bolillo remojado en salsa y relleno de carne"}
+    ];
+    response.setHeader('Content-Type', 'text/html');
+    response.write('<h1>Menu</h1>');
+    response.write("<ul>");
+    for(let platillo of platillos){
+        response.write("<li>" + platillo.nombre + ": " + platillo.descripcion + "</li>");
+    }
+    response.write("</ul>");
+    response.write('<a href="/menu/add"> Agregar platillo</a>')
+    response.end();
+} else if(request.url === "/menu/add"){
+    // agregar comida a menu
+    response.setHeader('Content-Type', 'text/html');
+    response.write('<h1>Agregar platillo a Menu</h1>');
+    response.write('<form action="/menu/add" method="POST">');
+    response.write('<label for="nombre"> Nombre del platillo: </label>');
+    response.write('<input type="text" id="nombre" name="nombre" placeholder="tacos" required>');
+    response.write('<br>');
+    response.write('<br>');
+    response.write('<label for="descipcion"> Descripcion del platillo: </label>');
+    response.write('<input type="text" id="descipcion" name="descipcion" placeholder="tortilla con carne">');
+    response.write('<br>');
+    response.write('<br>');
+    response.write('<input type="submit" id="enviar" name="enviar" value="enviar">');
+    response.write('</form>');
+    response.end();
+
+} else if(request.url === "/adios"){
+    // manda a cancion en youtube
+} else{
+    response.statusCode = 404;
+    response.setHeader('Content-Type', 'text/html');
+    response.write('<h1>Esta pagina no existe!!!</h1>');
+    response.end();
+}
 
 });
 
