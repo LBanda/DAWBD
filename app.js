@@ -30,10 +30,18 @@ for(let item of arreglo){
 
 // servidor web
 const http = require('http');
+
+const platillos = [
+    {nombre:"sopes", descripcion:"tortilla frita con frijoles, queso y crema"},
+    {nombre:"chilaquiles", descripcion:"tortilla cortada y frita con salsa"},
+    {nombre:"taco", descripcion:"tortilla rellena de carne y salsa"},
+    {nombre:"pambazo", descripcion:"bolillo remojado en salsa y relleno de carne"}
+];
 const { url } = require('inspector');
 
 const server = http.createServer( (request,response) => {
     console.log(request,url);
+
 
 
 
@@ -44,12 +52,7 @@ if(request.url === "/hola"){
     response.end();
 } else if(request.url === "/menu"){
     // mostrar menu
-    const platillos = [
-        {nombre:"sopes", descripcion:"tortilla frita con frijoles, queso y crema"},
-        {nombre:"chilaquiles", descripcion:"tortilla cortada y frita con salsa"},
-        {nombre:"taco", descripcion:"tortilla rellena de carne y salsa"},
-        {nombre:"pambazo", descripcion:"bolillo remojado en salsa y relleno de carne"}
-    ];
+    
     response.setHeader('Content-Type', 'text/html');
     response.write('<h1>Menu</h1>');
     response.write("<ul>");
@@ -59,7 +62,8 @@ if(request.url === "/hola"){
     response.write("</ul>");
     response.write('<a href="/menu/add"> Agregar platillo</a>')
     response.end();
-} else if(request.url === "/menu/add"){
+} else if(request.url === "/menu/add" && request.method === "GET"){
+    console.log(request.method);
     // agregar comida a menu
     response.setHeader('Content-Type', 'text/html');
     response.write('<h1>Agregar platillo a Menu</h1>');
@@ -76,9 +80,40 @@ if(request.url === "/hola"){
     response.write('</form>');
     response.end();
 
+} else if(request.url === "/menu/add" && request.method === "POST"){
+    console.log(request.method);
+    //recibir datos del cliente
+    let datos = []; 
+    request.on('data', (dato) => {
+        //console.log(dato);
+        datos.push(dato);
+    });
+
+    //procesa datos
+    return request.on('end', () => {
+        const datos_completos = Buffer.concat(datos).toString();
+        console.log(datos);
+        console.log(datos_completos);
+        const nombre = datos_completos.split('=')[1].split('&')[0];
+        const descripcion = datos_completos.split('=')[2].split('&')[0];
+        console.log(nombre);
+        console.log(descripcion);
+
+        // agregar nuevo platillo
+        platillos.push({nombre: nombre, descripcion: descripcion});
+
+        // manda a menu
+        response.statusCode = 302;
+        response.setHeader('Location', '/menu');
+        response.end();
+    });
+    
+    
+
+    
 } else if(request.url === "/adios"){
     // manda a cancion en youtube
-} else{
+}else{
     response.statusCode = 404;
     response.setHeader('Content-Type', 'text/html');
     response.write('<h1>Esta pagina no existe!!!</h1>');
