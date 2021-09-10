@@ -75,3 +75,12 @@ img{
 .mostrar {
   display: block;
 }
+
+img .imgAC{
+  height: 100%;
+  width: 80 ;
+}
+
+img .img_ac{
+  height: 100%;
+}
