@@ -2,8 +2,18 @@ const express = require('express');
 
 const router = express.Router();
 
+const platillos = [
+    {nombre:"sopes", descripcion:"tortilla frita con frijoles, queso y crema"},
+    {nombre:"chilaquiles", descripcion:"tortilla cortada y frita con salsa"},
+    {nombre:"taco", descripcion:"tortilla rellena de carne y salsa"},
+    {nombre:"pambazo", descripcion:"bolillo remojado en salsa y relleno de carne"}
+];
+
 router.get('/lista', (request,response,next) => {
-    response.render('lista');
+    response.render('lista',{
+        titulo: "Titulo dinamico",
+        lista_platillos: platillos
+    });
 });
 
 router.get('/add', (request, response, next) => {

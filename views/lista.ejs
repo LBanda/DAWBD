@@ -8,9 +8,20 @@
     <title>Laboratorio 1</title>
 </head>
 <header>       
-    <h1>Laboratorio 1: Introducción a las aplicaciones web, HTML5 y ciclo de vida de los sistemas de información</h1>
+    <h1> <%= titulo %></h1>
 </header>
 <body>
+
+    <% if (lista_platillos.length > 0) { %>
+        <ul>
+            <% for (let platillo of lista_platillos) { %>
+                <li><%= platillo.nombre %></li>
+            <% } %>
+        </ul>
+    <% } else { %>
+        <h1>El arreglo está vacío</h1>
+    <% } %>   
+
     <div>
         <h2>Preguntas</h2>
         <ul>
