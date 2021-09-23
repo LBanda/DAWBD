@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Laboratorio 1</title>
+</head>
+<header>       
+    <h1>Laboratorio 1: Introducción a las aplicaciones web, HTML5 y ciclo de vida de los sistemas de información</h1>
+</header>
+<body>
+    <div>
+        <h2>Preguntas</h2>
+        <ul>
+            <li> <strong class="preguntas"> ¿Cuál es la diferencia entre Internet y la World Wide Web? </strong>
+                <br>
+                El internet es una inmensa conexion de computadoras entre si alrededor de todo el mundo, y WWW es una coleccion de paginas
+                que trabajan sobre el internet.
+            </li>
+
+            <li><strong class="preguntas">¿Cuáles son las partes de un URL?</strong>
+                <br>
+                Protocolo, Dominio, Path y Parametros
+            </li>
+
+            <li><strong class="preguntas"> ¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</strong>
+                <br>
+                GET: Solicita informacion a un recurso en especial donde los datos no se pueden modificar. 
+                <br>
+                HEAD: Se utiliza para comprobar si el recurso se encuentra antes de hacer un GET.
+                <br>
+                POST: Envia datos a un servidor.
+                <br>
+                PUT: Edita un recurso ya existente en un servidor.
+                <br>
+                PATCH: Aplica modificaciones parciales a un recurso.
+                <br>
+                DELETE: Borra un recurso en especifico.
+            </li>
+
+            <li><strong class="preguntas">¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y contraseña en algún sitio? ¿Por qué?</strong>
+                <br>
+                POSt, ya que este es mas seguro
+            </li>
+
+            <li><strong>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?</strong>
+                <br>
+                GET
+            </li>
+
+            <li><strong>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?</strong>
+                <br>
+                Que todo salio bien
+            </li>
+
+            <li><strong>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 404? ¿Por qué?</strong>
+                <br>
+                No, es del usuario, y del desarrollador solo si es algo que no se encontro dentro de la pagina.
+            </li>
+
+            <li><strong>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 500? ¿Por qué?</strong>
+                <br>
+                Si, ya que es un fallo con el servidor.
+            </li>
+
+            <li><strong>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de HTML 4 que en HTML5 estén desaprobados.</strong>
+                <br>
+                Que es una etiqueta vieja que se cambio por otra, pero aun es soportada en los navegadores.
+                <br>
+                La etiqueta "center" es un ejemplo.
+            </li>
+
+            <li><strong>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</strong>
+                <br>
+                HTML5 tiene un control de errores para que su sintexis sea compatible con todas las implementaciones.
+            </li>
+
+            <li><strong>¿Qué componentes de estructura y estilo tiene una tabla?</strong>
+                <br>
+                Table, THEAD, TFOOT, TBODY, TR, <br>
+                width       %Length;       #IMPLIED  -- anchura de la tabla --<br>
+                border      %Pixels;       #IMPLIED  -- controlar el borde que rodea a la tabla --<br>
+                frame       %TFrame;       #IMPLIED  -- qué partes del borde representar --<br>
+                rules       %TRules;       #IMPLIED  -- líneas de división entre filas y columnas --<br>
+                cellspacing %Length;       #IMPLIED  -- espaciado entre celdas --<br>
+                cellpadding %Length;       #IMPLIED  -- espacio dentro de las celdas --
+            </li>
+
+            <li><strong>¿Cuáles son los principales controles de una forma HTML5?</strong>
+                <br>
+                form, fieldset, legend, textarea, label, button e input.
+            </li>
+
+            <li><strong>¿Qué tanto soporte HTML5 tiene el navegador que utilizas? Puedes utilizar la siguiente página para descubrirlo: http://html5test.com/ (Al responder la pregunta recuerda poner el navegador que utilizas)</strong>
+                <br>
+                El navegador que uso es Opera, y tiene un soporte de 474 de 555
+            </li>
+
+            <li><strong>¿Cuál es el ciclo de vida de los sistemas de información?</strong>
+                <br>
+                Nacimiento, Desarrollo, Operaciones, Mantenimiento y Muerte.  
+            </li>
+
+            <li><strong>¿Cuál es el ciclo de desarrollo de sistemas de información?</strong>
+                <br>
+                Planificacion, Definicion de requisitos, Diseño, Desarrollo y Pruebas.
+            </li>
+        </ul>
+    </div>
+
+    <h1>Laboratorio 3: CSS</h1>
+
+    <div>
+        <img src="../img/imgcss.jpg" alt="Imagen de CSS">
+    </div>
+
+    <div>
+        <h2>Comandos Git</h2>
+        <ul>
+            <li><strong>git add -A</strong>: Se utiliza para indicarle a git que rastree todos los archivos.</li>
+            <li><strong>git commit -m "<em>mensaje descriptivo sobre el cambio</em>"</strong>: Se utiliza para guardar los cambios que se hicieron en el repositorio local.</li>
+            <li><strong>git push</strong>: Se utiliza para "empujar" los cambios del repositorio local al repositorio remoto.</li>
+            <li><strong>git status</strong>: Nos da el estado actual del repositorio.</li>
+            <li><strong>git log</strong>: Muestra el historial del repositorio local.</li>
+            <li><strong>git branch</strong>: Muestra una lista con las ramas del repositorio.</li>
+            <li><strong>git checkout -b <em>[rama]</em></strong>: Crea una nueva rama con el nombre especificado en <em>[rama]</em> y nos cambia a la nueva rama.</li>
+            <li><strong>git checkout <em>[rama]</em></strong>: Nos cambia a la rama esppecificada en <em>[rama]</em>.</li>
+            <li><strong>git merge <em>[rama]</em></strong>: Combina la rama especificada en <em>[rama]</em> con la rama en la que nos encontramos</li>
+        </ul>
+    </div>
+
+    <div>
+        <img src="../img/imgit.jpg" alt="Imagen de Git">
+    </div>
+
+    <footer class="info">
+        <h2>Información de contacto</h2>
+        <p>Jose Luis Banda Hernandez <br> 
+            A01610329 <br>
+            A01610329@itesm.mx</p> 
+    </footer>
+    <script src="/js/js.js"></script>
+</body>
+</html>
