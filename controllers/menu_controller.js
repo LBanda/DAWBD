@@ -1,6 +1,8 @@
 const Platillo = require('../models/platillo.js');
 
 exports.get_lista = (request, response, next) => {
+    console.log(request.get('Cookie'));
+    console.log(request.cookies);
     response.render('lista',{
         titulo: "Titulo dinamico",
         lista_platillos: Platillo.fetchAll()
@@ -29,6 +31,7 @@ exports.post_add = (request, response, next) => {
     console.log(request.body);
     console.log(request.body.nombre);
     console.log(request.body.descripcion);
+    response.setHeader('Set-Cookie', 'ultimo_platillo='+request.body.nombre+';HttpOnly');
     const platillo = new Platillo(request.body.nombre, request.body.descripcion);
     platillo.save();
     response.send("Gracias por contribuir con el menú");
