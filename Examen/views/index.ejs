@@ -9,26 +9,16 @@
 </header>
 <body>
 
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Fecha/Hora</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-
-          </tr>
-          <tr>
-
-          </tr>
-          <tr>
-
-          </tr>
-        </tbody>
-      </table>
+    <% if (lista_zombies.length > 0) { %>
+        <ul>
+            <% for (let zombie of lista_zombies) { %>
+                <li><%= zombie.znombre %></li>
+                <li><%= zombie.zestado %></li>
+            <% } %>
+        </ul>
+    <% } else { %>
+        <h1>El arreglo está vacío</h1>
+    <% } %>   
 
 
     <%- include('includes/footer.ejs') %>
