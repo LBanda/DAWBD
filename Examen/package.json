@@ -1,7 +1,7 @@
 {
-  "name": "dawbd",
+  "name": "examen",
   "version": "1.0.0",
-  "description": "laboratorios de express",
+  "description": "Examen de parcial 2 DAWBD",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
@@ -14,7 +14,7 @@
   "keywords": [
     "daw"
   ],
-  "author": "Luis Banda",
+  "author": "Jose Luis Banda A01610329",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/LBanda/DAWBD/issues"

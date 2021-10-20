@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('includes/head.ejs') %>
+
+<header>       
+    <h1> Personas por la Ética en el Trato de los Zombis (PETZ) </h1>
+    <%- include('includes/navbar.ejs') %>
+</header>
+<body>
+
+    <form>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Nombre del zombie</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Luis Banda">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Estado</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>infección</option>
+            <option>desorientación</option>
+            <option>violencia</option>
+            <option>desmayo</option>
+            <option>transformación</option>
+          </select>
+        </div>
+        <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary">Confirmar</button>
+          </div>
+      </form>
+
+
+    <%- include('includes/footer.ejs') %>
+</body>
+</html>
