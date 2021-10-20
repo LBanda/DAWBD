@@ -1,19 +1,22 @@
 const express = require('express');
 const app = express();
 
-const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
-app.use(bodyParser.urlencoded({extended: false}));
+const path = require('path');
+const router = express.Router();
 
-
+//Middleware
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'uploads')));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
 
-
+app.get('/index', (request, response, next) => {
+    response.sendFile(path.join(__dirname, 'views', 'index.ejs'));
+});
 
 app.use((request, response, next) => {
     console.log('Error 404');

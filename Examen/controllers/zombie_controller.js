@@ -1,1 +1,1 @@
-const Registros = require('../models/registros');
+const Registros = require('../models/registros.js');
