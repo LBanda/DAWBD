@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (let zombie of lista_zombie) { %>
+            <tr>
+                <td><%= zombie.nombre %></td>
+                <td><%= zombie.estado %></td>
+                <td><%= zombie.fecha %></td>
+           </tr>
+        <% } %>
+    </tbody>
+</table>

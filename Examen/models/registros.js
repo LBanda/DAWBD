@@ -1,26 +1,28 @@
 const db = require('../util/database');
 
-const zombies = [
-    {nombre:"Luis Banda", estado:"transformación"},
-];
+module.exports = class Zombie {
 
-module.exports = class zombie {
+    constructor(znombre, zestado) {
 
-    //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(znombre,zestado) {
-        this.estado = zestado;
         this.nombre = znombre;
+        this.estado = zestado;
+        this.fecha = null;
+        
     }
 
-    //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        zombies.push(this);
+        return db.execute('INSERT INTO zombie (Nombre_Zombie, Estado_Zombie, Fecha) VALUES ( ?, ?, ?)',
+        [ this.nombre, this.estado, this.fecha]);
     }
 
-    //Este método servirá para devolver los objetos del almacenamiento persistente.
-    static fetchAll() {
-        return zombies;
+    static fetchAll(ID_Estado) {
+        if (ID_Estado) {
+            return db.execute('SELECT zombie.Nombre_Zombie, estados.fecha, estados.Estado_Zombie FROM zombie INNER JOIN estados ON zombie.Estado_Zombie = estados.ID_Estado');
+        } else{
+            return db.execute('SELECT zombie.Nombre_Zombie, estados.fecha, estados.Estado_Zombie FROM zombie INNER JOIN estados ON zombie.Estado_Zombie = estados.ID_Estado  WHERE ID_Estado = ?', [ID_Estado]);
+
+        }
+    
     }
 
 }
-    

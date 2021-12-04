@@ -1,35 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    <%- include('includes/head.ejs') %>
-
-<header>       
-    <h1> Personas por la Ética en el Trato de los Zombis (PETZ) </h1>
-    <%- include('includes/navbar.ejs') %>
-</header>
-<body>
-
-    <form>
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Nombre del zombie</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Luis Banda">
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Estado</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>infección</option>
-            <option>desorientación</option>
-            <option>violencia</option>
-            <option>desmayo</option>
-            <option>transformación</option>
-          </select>
-        </div>
-        <div class="col-auto my-1">
-            <button type="submit" class="btn btn-primary">Confirmar</button>
-          </div>
+  <%- include('includes/head.ejs') %>
+  <%- include('includes/navbar.ejs') %>
+  <div class="container">
+  <h1><%= titulo %></h1><br>
+  <div class="input-field col s12">
+      <form action="/add-register" method="POST"></form>
+  
+          <label for="nombre">Nombre completo: </label>
+          <input type="text" id="nombre" name="nombre" placeholder="Juan Perez" required>
+          <br/>
+          <br/>
+          <label for="nombre">Estado actual: </label>
+          <input type="text" id="tipo_estado" name="tipo_estado" placeholder="infección" required>
+          <br/>
+          <br/>
+          <input type="submit" id="enviar" name="enviar" value="Enviar">
+          <br/>
+          
       </form>
-
-
-    <%- include('includes/footer.ejs') %>
+  <%- include('includes/footer.ejs') %> 
 </body>
 </html>

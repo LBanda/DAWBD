@@ -1,37 +1,38 @@
-const zombie = require('../models/registros.js');
+const Zombie = require('../models/registros');
 
-exports.get_registros = (request, response, next) => {
-    console.log(request.get('Cookie'));
-    console.log(request.cookies);
-    response.render('lista',{
-        lista_platillos: zombie.fetchAll()
+exports.getList = (request, response) => {
+    request.getConnection((err, conn) => {
+        conn.query('SELECT zombie.Nombre_Zombie, estados.Fecha, estados.Tipo_Estado FROM zombie INNER JOIN estados ON zombie.Estado_Zombie = estados.ID_Estado', (err, zombies) =>{
+            if(err){
+                response.json(err);
+            }
+            console.log(zombies)
+            response.render('lista_zombies', {
+                titulo: "Lista de zombies",
+                lista_zombie: zombies,
+            })
+        
+    });
+    
+});
+};
+
+exports.getAdd = (request, response, next) => {
+    response.render('registrar_estado',{
+        titulo: "Registrar nuevo zombie:",
     });
 };
 
-
-exports.get_add = (request, response, next) => {
-    let respuesta = '<head><meta charset="UTF-8"></head>';
-    respuesta += '<h1>Registrar nuevo zombie</h1>';
-    respuesta += '<form action="/menu/add" method="POST">';
-    respuesta += '<label for="nombre">Nombre del zombie: </label>';
-    respuesta += '<input type="text" id="nombre" name="nombre" placeholder="Luis" required>';
-    respuesta += '<br/>';
-    respuesta += '<br/>';
-    respuesta += '<label for="estado>Estado del zombie: </label>';
-    respuesta += '<input type="text" id="estado" name="estado" placeholder="transformación">';
-    respuesta += '<br/>';
-    respuesta += '<br/>';
-    respuesta += '<input type="submit" id="enviar" name="enviar" value="Enviar">';
-    respuesta +='</form>';
-    response.send(respuesta);
-};
-
-exports.post_add = (request, response, next) => {
+exports.postAdd = (request, response) => {
     console.log(request.body);
-    console.log(request.body.nombre);
-    console.log(request.body.estado);
-    response.setHeader('Set-Cookie', 'ultimo_zombie='+request.body.nombre+';HttpOnly');
-    const platillo = new zombie(request.body.nombre, request.body.estado);
-    platillo.save();
-    response.send("Gracias por contribuir con el menú");
+    const zombie = new Zombie(request.body.nombre, request.body.estado, request.body.fecha );
+    zombie.save()
+    .then(() => {
+        response.status(302).redirect('/');
+        
+    }).catch(err => {
+
+        response.status(302).redirect('/error');
+    });
+    
 };
